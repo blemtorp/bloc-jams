@@ -1,35 +1,26 @@
-            var pointsArray = document.getElementsByClassName('point');
- 
-            var animatePoints = function(points) {
             
-                 
-                /* var revealPoint = function() {
-                    for (var i = 0; i < 3; i++ ) {
-                      points[i].style.opacity = 1;
-                      points[i].style.transform = "scaleX(1) translateY(0)";
-                      points[i].style.msTransform = "scaleX(1) translateY(0)";
-                      points[i].style.WebkitTransform = "scaleX(1) translateY(0)";   
-                    }
-                  
-                    
-                }
-                
-                revealPoint();*/
-                forEach(points);
-                 
-             };
 
-            window.onload = function() {
-                if (window.innerHeight > 950) {
-                    animatePoints(pointsArray);
+    var animatePoints = function() {
+         var revealPoint = function() {
+             $(this).css({
+                 opacity: 1,
+                 transform: 'scaleX(1) translateY(0)'
+             });
+         };
+    
+        $.each($('.point'), revealPoint);
+    };
+
+            $(window).load(function() {
+                if ($(window).height() > 950) {
+                  animatePoints();
                 }
-                var sellingPoints = document.getElementsByClassName('selling-points')[0];
-                var scrollDistance = sellingPoints.getBoundingClientRect().top - window.innerHeight + 200;
-                window.addEventListener('scroll', function(event) {
+                var scrollDistance = $('.selling-points').offset().top - $(window).height() + 200;
+               $(window).scroll(function(event) {
                     //console.log("Current offset from the top is " + sellingPoints.getBoundingClientRect().top + " pixels");
-                    if (document.body.scrollTop >= scrollDistance) {
-                        animatePoints(pointsArray);   
+                    if ($(window).scrollTop() >= scrollDistance) {
+                      animatePoints();
                     }
-     });
-            }
+              });
+            });
  
