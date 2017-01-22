@@ -96,10 +96,10 @@ var setCurrentAlbum = function(album) {
  
      // Don't get this part how albumSongList
      for (var i = 0; i < album.songs.length; i++) {
-         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
+         $albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
          var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
          $albumSongList.append($newRow);
-         console.log(albumSongList.innerHTML)
+         console.log($albumSongList.innerHTML)
      }
  };
 
@@ -192,6 +192,9 @@ var currentSongFromAlbum = null;
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
+
+var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
+ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
 
  $(document).ready(function() {
      // Defines the HTML that wraps into the table  (not sure whare the class comes from)
